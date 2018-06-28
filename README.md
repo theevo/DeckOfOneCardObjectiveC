@@ -3,7 +3,7 @@
 Day 2 S.D.P (Student - Daily- Project)
 
 ## Part 1
-- API  and JSON
+### API  and JSON
 This is going to be a step by step challenge. This will be the easiest set of instructions since it's your first day networking in Objective C. Your future instructions will be more vague as you go through this unit. 
 We are going to build an app where the user taps a button and that will draw a new card from a deck. This is going to be coming live from an API! Knowing how to get data from the web is a very important skill and it's not if, rather it's when you get asked in an interview on how to make async calls from an API or RESTful API. 
 First head over to http://deckofcardsapi.com/ and study the documentation. The more you study the API, the more you will visualize what you can build. Every API is different, so it takes time to read the documentation. We want to draw a new card from a deck that will display the image of the card, and the suit as a label. What would be your base URL? 
@@ -28,9 +28,9 @@ This will summarize the 3 ways urls a built. REMEMBER THIS! You can give me a hi
 2. Extensions are periods. In Swift that is the appendingPathExtension(_:) method. 
 3. Search term items known as Query Items and parameters are URLQueryItem in Swift. 
 Every api is built differently, using different ways to build a url.
-- UI
+### UI
 Now that we studied the API and url lets build our UI! Drag out a UIViewController with UIImageView, UIButton, and a UILabel. Press the shift key and embed the imageView and label in a UIStackView by clicking on downward arrow button in the bottom right of Xcode. Once it's in a stack view, click on the stack view from the view hierarchy and increase the spacing of the 3 objects up to 10 in the Attributes Inspector. Control drag from the stack view to the superview. You should see a window pop up. Holding the shift key select the Center Horizontal in Safe Area, Center Vertically in Safe Area, Equal Widths, and Equal Heights. Click on the update constrains button down at the bottom right of Xcode. You stack view should be the same size as the view for ever screen size. Make sure your stack view is selected and click on the Size Inspector (the ruler) and edit the Equal Width to: Superview to be 0.8 and the Equal Height to: Superview to be 0.7. Now our screen will be 10 points on the leading and trailing of every screen size device, wooo! 
- - Model 
+### Model 
 *vMake a new cocoa touch class named DVMCard. Paste the correct JSON into a JSON viewer. You should see 4 elements that are dictionaries. One of the elements is a key of cards and a value of an array of dictionaries. This is a beautiful JSON tree. We have a list of 52 cards (even though one is getting displayed). More importantly we have an array of dictionaries which is really easy to parse, serialize (look up JSONSerialization), and initialize the jsonData into our object. Which is AWESOME because once we turn the JSON into our object, we can do anything! 
 Add 2 string properties of the suit and image in the .h file (the .h is the public file). Then add your initializer signature for your two properties, this will be the designated initializer which should have two parameters. The designated initializer plays an important role for a class. It ensures that inherited instance variables are initialized by invoking the designated initializer of the superclass (in this case NSObject). It is typically the init... method that has the most parameters and that does most of the initialization work .You need a second initializer that will have only one parameter of a dictionary which will be used from the JSON. This is known as a secondary initializer. Both these initializers are technically instance methods that begin with "init" and return an object of the dynamic type id (or properties). Every object that declares instance variables should implement an initializing method. This is a pattern that you should follow with  iOS O.O programing. Our .h file is complete! 
 Note:
@@ -56,7 +56,7 @@ https://developer.apple.com/library/archive/documentation/General/Conceptual/Coc
 Our model object is complete. Nice work! 
 
 ## Part 2
-— Controller 
+### Controller 
 
 * In the .h add the class initializer using the + rather than the - for the sharedController. This will set up our singleton. Now add the method signature to drawANewCard that will fetch out object. It will take in an NSInteger as a parameter, after the one an only parameter we need to have a completion closure block to fetch the array of our object and or an error. We will use light weight generics to specify that our array should be an array of DVMCard objects. The syntax looks like this completion: ```(void(^) (NSArray<DVMCard *> *cards, NSError *error))completion; ```
 We can't forget about our image! We have the drawNewCard method signature to get back our object but we need to have another function to fetch the image data that comes after we got back out object. Once we have our object, we can use the imageString property to convert that into a url and make a request to get back data, turn that data into an actual image that will be displayed to the user. This is my favorite method to reverse-engineer because you can solve the puzzle backwards which connects the dots a little better and gives YOU the programmer a good strategy when you get stuck. The fetchCardImage method should take a parameter of DVMCard which will be the card object coming back from the JSON. Then write the completion closure to get back either a UIImage or and NSError. If you are getting a error, you need to import <UIKit/UIKit.h> and @class DVMCard; at the top. The difference between the @class and import is that Import gives you everything, its more like a copy and paste. The @class specifies that you are only going to use that class. The @class is a less expensive operation for the compiler because it doesn't have to import everything from the class. It has NO EFFECT on the user, we just want to help our compiler load time when we can. 
@@ -73,7 +73,7 @@ Now make the final NSURL that will be the searchURL, set it equal to urlComponen
 Handle the errors, also check if there is not data coming back. Then create a UIIMage *cardImage = [UIImage imageWithData: (plug in our data!)]; Lastly call our completion. Don't forget the resume! 
 
 ## Part 3
-— DVMCardViewController 
+### DVMCardViewController 
 
 * Hook up the two outlets for the UIImageImageView and the UILabel. Add an action for the button to draw a card. For the views to display we need to call our 2 methods in the DVMCardController. Make a new method -(void)updateViews {. Call the  [[DVMCardController sharedController] drawNewCard method. Plug in the amount of cards you want the user to see in the drawNewCard parameter. We have an array coming back so we need to get one card out of the array of cards. Try this on your own for 5 minutes. You should come up with something like this DVMCard *card = [cards objectAtIndex:0]; . Now we want UI elements to be on the main thread. First, the string of the card suit will comeback. It should look like this     
 dispatch_async(dispatch_get_main_queue(), ^{
