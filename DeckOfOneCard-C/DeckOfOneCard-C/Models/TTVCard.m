@@ -10,7 +10,7 @@
 
 @implementation TTVCard
 
-- (instancetype) initWithImage:(NSURL *)image ofValue:(NSString *)value andSuit:(NSString *)suit
+- (instancetype) initWithImage:(NSString *)image ofValue:(NSString *)value andSuit:(NSString *)suit
 {
     self = [super init];
     
@@ -24,9 +24,14 @@
 }
 
 
-- (instancetype) init
+- (instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)dictionary
 {
-    return [self initWithImage:[NSURL URLWithString:@""] ofValue:@"" andSuit:@""];
+    NSString *image = dictionary[@"image"];
+    NSString *value = dictionary[@"value"];
+    NSString *suit = dictionary[@"suit"];
+    
+    return [self initWithImage:image ofValue:value andSuit:suit];
+
 }
 
 

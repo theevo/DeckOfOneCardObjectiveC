@@ -15,7 +15,6 @@
 		AC97092E242A9FE000A5D1C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC97092C242A9FE000A5D1C2 /* LaunchScreen.storyboard */; };
 		AC970931242A9FE000A5D1C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC970930242A9FE000A5D1C2 /* main.m */; };
 		AC97093B242AA3DF00A5D1C2 /* TTVCard.m in Sources */ = {isa = PBXBuildFile; fileRef = AC97093A242AA3DF00A5D1C2 /* TTVCard.m */; };
-		AC97093E242AA86B00A5D1C2 /* TTVTopLevelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AC97093D242AA86B00A5D1C2 /* TTVTopLevelObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +32,6 @@
 		AC970930242A9FE000A5D1C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC970939242AA3DF00A5D1C2 /* TTVCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTVCard.h; sourceTree = "<group>"; };
 		AC97093A242AA3DF00A5D1C2 /* TTVCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTVCard.m; sourceTree = "<group>"; };
-		AC97093C242AA86B00A5D1C2 /* TTVTopLevelObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTVTopLevelObject.h; sourceTree = "<group>"; };
-		AC97093D242AA86B00A5D1C2 /* TTVTopLevelObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTVTopLevelObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +93,6 @@
 			children = (
 				AC970939242AA3DF00A5D1C2 /* TTVCard.h */,
 				AC97093A242AA3DF00A5D1C2 /* TTVCard.m */,
-				AC97093C242AA86B00A5D1C2 /* TTVTopLevelObject.h */,
-				AC97093D242AA86B00A5D1C2 /* TTVTopLevelObject.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,7 +168,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC97093E242AA86B00A5D1C2 /* TTVTopLevelObject.m in Sources */,
 				AC970926242A9FDF00A5D1C2 /* ViewController.m in Sources */,
 				AC970920242A9FDF00A5D1C2 /* AppDelegate.m in Sources */,
 				AC97093B242AA3DF00A5D1C2 /* TTVCard.m in Sources */,
